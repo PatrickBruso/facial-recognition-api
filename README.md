@@ -1,19 +1,6 @@
-<center><img src="./assets/appicons/original/FRDMS100x100.png" /></center>
-
 # Facial Recognition Database Management System
 
-[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
-[![macOS](https://svgshare.com/i/ZjP.svg)](https://svgshare.com/i/ZjP.svg)
-[![pre-commit](https://github.com/ivan0313/Facial-Recognition-Database-Management-System/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/ivan0313/Facial-Recognition-Database-Management-System/actions/workflows/pre-commit.yml)
-
-![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![ts](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
-![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![sqlite](https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white)
-
-Note: This project is current being developed.
+Back-end for <https://github.com/ivan-ngchakming/facial-recognition-web>
 
 ## Introduction
 
@@ -22,45 +9,6 @@ Facial Recognition Database Management System (FRDMS) is a facial recognition sy
 Powered by python and react, and packaged into a single executable that can be used by anyone with zero dependencies required.
 
 ![Demo](./docs/demo.gif)
-
-## Usage
-
-Download the latest release from the [right side bar](https://github.com/ivan0313/Facial-Recognition-Database-Management-System/releases).
-
-### Windows
-
-- Download FRDMS_WIN.exe.
-
-- download [Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) for FRDMS to work properly.
-
-- Double click on FRDMS_WIN.exe to start application.
-
-### MacOS
-
-- Download FRDMS_MACOS
-- Open terminal
-
-- Browse to Download directory
-
-   ```bash
-   cd Download
-   ```
-
-- Change permission
-
-   ```bash
-   chmod 777 ./FRDMS_MACOS
-   ```
-
-- Start the application
-
-   ```bash
-   ./FRDMS_MACOS
-   ```
-
-### Starter Database
-
-Download FRDMS.db and place it in the same directory as FRDMS.exe to use a sample starter database. Or start FRDMS.exe directly to create a blank database.
 
 ## Pages
 
