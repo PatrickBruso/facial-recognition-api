@@ -19,15 +19,9 @@ def resolve_photo(_, info, rbytes):
     image = decode_img(rbytes)
     image = image.convert("RGB")
 
-    with runtime(f"Resolved photo mutation", logger):
-        try:
-            photo = Photo(image)
-            db.session.add(photo)
-            db.session.commit()
-        except IntegrityError:
-            logger.debug("Image already exist in database")
-            db.session.rollback()
-            photo = Photo.query.filter(Photo.array == np.array(image)).one()
+    photo = Photo(image)
+    db.session.add(photo)
+    db.session.commit()
 
     return photo
 

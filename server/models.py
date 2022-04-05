@@ -1,22 +1,14 @@
 import logging
+import uuid
 
 import cv2
 import numpy as np
-import PIL
 from sqlalchemy.orm import backref
 
 from .database import db
-from .faces.arcface import face_app
-
+from .faces import face_app
 
 logger = logging.getLogger(__name__)
-
-
-def same_as(column_name):
-    def default_function(context):
-        return context.current_parameters.get(column_name)
-
-    return default_function
 
 
 class Profile(db.Model):
@@ -79,33 +71,30 @@ class Photo(db.Model):
     __tablename__ = "photo"
 
     id = db.Column(db.Integer, primary_key=True)
-    array = db.Column(db.PickleType, unique=True)
+    url = db.Column(db.String)
     width = db.Column(db.Integer, nullable=False)
     height = db.Column(db.Integer, nullable=False)
 
-    # faces = db.relationship("Face", cascade="all,delete,delete-orphan")
-
     def __init__(self, image, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
+        img_arr = np.array(image)
+        
         self.width, self.height = image.size
-        self.array = np.array(image)
+        self.url = f"./public/{uuid.uuid4()}.jpeg"
+        cv2.imwrite(self.url, cv2.cvtColor(img_arr, cv2.COLOR_RGB2BGR))
 
-        cvimg = cv2.cvtColor(self.array, cv2.COLOR_RGB2BGR)
+        cvimg = cv2.cvtColor(img_arr, cv2.COLOR_RGB2BGR)
         arcfaces = face_app.get(cvimg)
-
+        
         logger.debug(f"{len(arcfaces)} faces found in picture")
         for arcface in arcfaces:
             logger.debug(f"Face location {arcface.location}")
             face = Face(
-                location=arcface.location,
+                location=arcface.bbox,
                 landmarks=arcface.landmark_2d_106,
                 encoding=arcface.embedding,
             )
             self.faces.append(face)
-
-    @property
-    def image(self):
-        return PIL.Image.fromarray(self.array)
 
     def __repr__(self):
         return f"<Photo {self.id} ({len(self.faces)} faces)>"

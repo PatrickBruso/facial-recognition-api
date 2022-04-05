@@ -1,5 +1,5 @@
 from flask.cli import AppGroup
-from ..faces.arcface import face_app
+from ..faces import face_app
 
 from ..database import db
 from ..models import *

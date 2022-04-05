@@ -4,7 +4,7 @@ import math
 from ariadne import QueryType, convert_kwargs_to_snake_case
 
 from ..models import *
-from ..faces.arcface.utils import cosine_similarity_batch
+from ..faces import cosine_similarity_batch
 from ..utils.dev import runtime
 
 logger = logging.getLogger(__name__)

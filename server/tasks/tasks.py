@@ -4,7 +4,7 @@ import logging
 import numpy as np
 from PIL import Image
 from server.database import db
-from server.faces.arcface.utils import cosine_similarity_batch
+from server.faces import cosine_similarity_batch
 from server.models import Photo, Profile, Face
 
 

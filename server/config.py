@@ -1,6 +1,7 @@
 import os
+from dotenv import load_dotenv
 
-from .utils.frozen import isfrozen, frozen_basedir
+load_dotenv()
 
 
 class Config(object):
@@ -8,15 +9,8 @@ class Config(object):
 
     PROJECT_DIR = os.path.abspath(os.path.dirname(BASE_DIR))
 
-    IS_FROZEN = isfrozen()
-    # Application settings
-    if IS_FROZEN:
-        FROZEN_BASE_DIR = frozen_basedir()
-        SQLALCHEMY_DATABASE_URI = f"sqlite:///{FROZEN_BASE_DIR}/FRDMS.db"
-        DATABASE_PATH = f"{FROZEN_BASE_DIR}/FRDMS.db"
-    else:
-        SQLALCHEMY_DATABASE_URI = "sqlite:///../FRDMS.db"
-        DATABASE_PATH = f"{BASE_DIR}/../FRDMS.db"
+    DB_URL = os.getenv("DB_HOST")  # TODO: get db url from env
+    SQLALCHEMY_DATABASE_URI = f"postgresql://root:root@localhost:5432/facial-recognition"
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

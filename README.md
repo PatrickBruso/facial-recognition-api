@@ -67,8 +67,28 @@ Identify known faces in the database from a live video
 
 ## Contributing
 
-For guidance on setting up a development environment and how to make a contribution to FRDMS, see the [contributing guidelines](./CONTRIBUTING.md).
+### First time setup
 
-## Special Thanks
+Create virtual environment using pipenv
 
-Special thanks to [Kabiirk](https://github.com/Kabiirk) for making the project logo.
+Install pre-commit hooks
+
+```sh
+pre-commit install
+```
+
+Create a copy of `.env.example`, rename to `.env` and fill in corresponding values
+
+```bash
+DB_HOST=
+DB_PORT=5432
+DB_NAME=facial-recognition
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+Run db migrations
+
+```bash
+flask db upgrade
+```
